@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Monk.Models.Worker>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Worker List</h2>
+<p>
+    @Html.ActionLink("Add New Worker", "WorkerAdd")
+</p>
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Sir Name</th>
+        <th>ID</th>
+        <th>Phone</th>
+        <th>Email</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@Html.DisplayFor(Item => item.FirstName)</td>
+        <td>@Html.DisplayFor(Item => item.SirName)</td>
+        <td>@Html.DisplayFor(Item => item.IdCard)</td>
+        <td>@Html.DisplayFor(Item => item.Phone)</td>
+        <td>@Html.DisplayFor(Item => item.Email)</td>
+    </tr>
+    }
+</table>
