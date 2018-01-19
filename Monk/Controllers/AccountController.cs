@@ -22,7 +22,7 @@ namespace Monk.Controllers
             {
                 foreach (var item in db.Workers)
                 {
-                    if(item.IdCard == idCard)
+                    if(item.IdCard == idCard && item.IdCard != null)
                     {
                         exsits = true;
                     }
