@@ -14,7 +14,7 @@ namespace Monk.Controllers
             return View();
         }
         //Get: "/Account/AddWorker?FirstName="+firstName+"&SirName="+sirName+"&IdCard="+idCard+"&Phone="+phone+"&email="+email
-        public bool AddWorker(string firstName, string sirName, string idCard, string phone, string email)
+        public bool AddWorker(string firstName, string surname, string idCard, string phone, string email)
         {
             bool added = false;
             bool exsits = false;
@@ -29,7 +29,7 @@ namespace Monk.Controllers
                 }
                 if (!exsits)
                 {
-                    db.Workers.Add(new Worker { FirstName = firstName, SirName = sirName, IdCard = idCard, Phone = phone, Email = email });
+                    db.Workers.Add(new Worker { FirstName = firstName, Surname = surname, IdCard = idCard, Phone = phone, Email = email });
                     db.SaveChanges();
                     added = true;
                 }

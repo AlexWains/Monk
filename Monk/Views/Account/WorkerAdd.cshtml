@@ -5,11 +5,11 @@
 <script>
     function AddWorker() {
         var firstName = document.getElementById("firstName").value;
-        var sirName = document.getElementById("sirName").value;
+        var surname = document.getElementById("surname").value;
         var idCard = document.getElementById("idCard").value;
         var phone = document.getElementById("phone").value;
         var email = document.getElementById("email").value;
-        $.get("/Account/AddWorker?FirstName=" + firstName + "&SirName=" + sirName + "&IdCard=" + idCard + "&Phone=" + phone + "&email=" + email, function (data) {
+        $.get("/Account/AddWorker?FirstName=" + firstName + "&Surname=" + surname + "&IdCard=" + idCard + "&Phone=" + phone + "&email=" + email, function (data) {
             if (data == "True")
                 alert("Worker Added");
             else
@@ -19,8 +19,8 @@
 </script>
 
 <h3>Add Worker</h3>
-<p>Enter First Name</p><input id="firstName" type="text" /><br />
-<p>Enter Sir Name</p><input id="sirName" type="text" /><br />
+<p>Enter First Name</p><input id="firstName" type="text"/><br />
+<p>Enter Surname</p><input id="surname" type="text" /><br />
 <p>Enter ID</p><input id="idCard" type="text" /><br />
 <p>Enter Phone Number</p><input id="phone" type="text" /><br />
 <p>Enter Email</p><input id="email" type="text" /><br />
