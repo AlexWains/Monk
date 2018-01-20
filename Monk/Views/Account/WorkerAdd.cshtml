@@ -10,8 +10,9 @@
         var phone = document.getElementById("phone").value;
         var email = document.getElementById("email").value;
         $.get("/Account/AddWorker?FirstName=" + firstName + "&Surname=" + surname + "&IdCard=" + idCard + "&Phone=" + phone + "&email=" + email, function (data) {
-            if (data == "True")
+            if (data == "True") {
                 alert("Worker Added");
+            }
             else
                 alert("Worker Was Not Added")
         })

@@ -22,12 +22,12 @@ namespace Monk.Controllers
             {
                 foreach (var item in db.Workers)
                 {
-                    if(item.IdCard == idCard && item.IdCard != null)
+                    if(item.IdCard == idCard)
                     {
                         exsits = true;
                     }
                 }
-                if (!exsits)
+                if (!exsits && idCard != "")
                 {
                     db.Workers.Add(new Worker { FirstName = firstName, Surname = surname, IdCard = idCard, Phone = phone, Email = email });
                     db.SaveChanges();
