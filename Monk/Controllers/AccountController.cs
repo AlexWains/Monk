@@ -29,7 +29,7 @@ namespace Monk.Controllers
                 }
                 if (!exsits && idCard != "")
                 {
-                    db.Workers.Add(new Worker { FirstName = firstName, Surname = surname, IdCard = idCard, Phone = phone, Email = email });
+                    db.Workers.Add(new Worker { FirstName = firstName, Surname = surname, IdCard = idCard, Phone = phone, Email = email , Username = idCard, Password = phone});
                     db.SaveChanges();
                     added = true;
                 }
@@ -37,10 +37,12 @@ namespace Monk.Controllers
             return added;
 
         }
+
         public ActionResult WorkerAdd()
         {
             return View();
         }
+
         public ActionResult WorkerTable()
         {
             var db = new WorkerContext();
@@ -48,13 +50,30 @@ namespace Monk.Controllers
             
         }
 
-
         public void DeleteWorker()
         {
             using (var db = new WorkerContext())
             {
                 db.Database.Delete();
             }
+        }
+
+
+        public bool ChangePassword(string username, string oldPassword, string newPassword)
+        {
+            bool changed = false;
+            using (var db = new WorkerContext())
+            {
+                foreach (var item in db.Workers)
+                {
+                    if(item.Username == username && item.Password == oldPassword)
+                    {
+                        item.Password = newPassword;
+                        changed = true;
+                    }
+                }
+            }
+            return changed;
         }
     }
 }
