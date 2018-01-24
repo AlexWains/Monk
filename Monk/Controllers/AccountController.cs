@@ -59,7 +59,7 @@ namespace Monk.Controllers
         }
 
 
-        public bool ChangePassword(string username, string oldPassword, string newPassword)
+        public bool ChangePasswordAct(string username, string oldPassword, string newPassword)
         {
             bool changed = false;
             using (var db = new WorkerContext())
@@ -74,6 +74,11 @@ namespace Monk.Controllers
                 }
             }
             return changed;
+        }
+
+        public ActionResult ChangePassword()
+        {
+            return View();
         }
     }
 }
