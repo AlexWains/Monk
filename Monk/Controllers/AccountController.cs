@@ -70,9 +70,9 @@ namespace Monk.Controllers
                     {
                         item.Password = newPassword;
                         db.SaveChanges();
+                        
                         changed = true;
                     }
-                    
                 }
             }
             return changed;
