@@ -50,7 +50,7 @@ namespace Monk.Controllers
             
         }
 
-        public void DeleteWorker()
+        public void DeleteWorkerDB()
         {
             using (var db = new WorkerContext())
             {
@@ -69,8 +69,10 @@ namespace Monk.Controllers
                     if(item.Username == username && item.Password == oldPassword)
                     {
                         item.Password = newPassword;
+                        db.SaveChanges();
                         changed = true;
                     }
+                    
                 }
             }
             return changed;
