@@ -61,21 +61,19 @@ namespace Monk.Controllers
 
         public bool ChangePasswordAct(string username, string oldPassword, string newPassword)
         {
-            bool changed = false;
+            bool Success = false;
             using (var db = new WorkerContext())
             {
-                foreach (var item in db.Workers)
+                Worker user = db.Workers.SingleOrDefault(x => x.Username == username);
+                if (user!=null && user.Password == oldPassword)
                 {
-                    if(item.Username == username && item.Password == oldPassword)
-                    {
-                        item.Password = newPassword;
-                        db.SaveChanges();
-                        
-                        changed = true;
-                    }
+                    user.Password = newPassword;
+                    db.Workers.Attach(user);
+                    db.SaveChanges();
+                    Success = true;
                 }
             }
-            return changed;
+            return Success;
         }
 
         public ActionResult ChangePassword()
